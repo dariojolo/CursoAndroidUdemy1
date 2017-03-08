@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //Boton para llamada telefonica
         btnTel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,6 +104,23 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        //Botón para navegación WEB
+        btnWeb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url = txtWeb.getText().toString();
+                if (url != null && !url.isEmpty()){
+                    Intent intentWeb = new Intent(Intent.ACTION_VIEW, Uri.parse("http://"+ url));
+                    //El paso anterior se puede hacer de la siguiente forma
+                    //Intent intentWeb = new Intent();
+                    //intentWeb.setAction(Intent.ACTION_VIEW);
+                    //intentWeb.setData(Uri.parse("http://"+ url));
+                    startActivity(intentWeb);
+                }
+
+            }
+        });
+
     }
 
     //Manejamos la respuesta a la peticion del permiso
