@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dariojolo.myapplication.MainActivity">
+
+    <TextView
+        android:id="@+id/txtM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ingrese un mensaje"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.032"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/txtMensaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="@id/txtM"
+        tools:layout_editor_absoluteX="-226dp"
+        tools:layout_editor_absoluteY="573dp"
+        android:layout_marginTop="14dp"
+        android:layout_below="@+id/txtM"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/btnAceptar"
+        android:layout_width="396dp"
+        android:layout_height="45dp"
+        android:text="Go next!"
+        tools:layout_editor_absoluteX="-6dp"
+        tools:layout_editor_absoluteY="466dp"
+        android:background="#dc3636"
+        android:textColor="#FFF"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/txtTel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txtMensaje"
+        android:layout_marginLeft="29dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="66dp"
+        android:ems="10"
+        android:inputType="phone"
+        android:layout_alignRight="@+id/txtMensaje"
+        android:layout_alignEnd="@+id/txtMensaje" />
+
+    <ImageButton
+        android:id="@+id/btnTel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/txtTel"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_toEndOf="@+id/txtTel"
+        android:layout_toRightOf="@+id/txtTel"
+        app:srcCompat="@android:drawable/stat_sys_phone_call" />
+
+    <EditText
+        android:id="@+id/txtWeb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtTel"
+        android:layout_alignStart="@+id/txtTel"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:inputType="textUri"
+        android:layout_toLeftOf="@+id/btnTel"
+        android:layout_toStartOf="@+id/btnTel" />
+
+    <ImageButton
+        android:id="@+id/btnWeb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnTel"
+        android:layout_alignStart="@+id/btnTel"
+        android:layout_centerVertical="true"
+        android:src="@android:drawable/ic_menu_view"
+        android:background="#E91E63"/>
+
+    <ImageButton
+        android:id="@+id/btnCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtWeb"
+        android:layout_marginTop="50dp"
+        app:srcCompat="@android:drawable/ic_menu_camera"
+        android:layout_alignRight="@+id/btnTel"
+        android:layout_alignEnd="@+id/btnTel"
+        android:layout_alignLeft="@+id/txtWeb"
+        android:layout_alignStart="@+id/txtWeb"
+        android:background="#E91E63"/>
+
+</RelativeLayout>
