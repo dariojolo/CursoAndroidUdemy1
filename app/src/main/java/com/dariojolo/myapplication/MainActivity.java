@@ -1,6 +1,7 @@
 package com.dariojolo.myapplication;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -19,6 +20,8 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private Button btn;
+    private Button btnContactos;
+    private Button btnEmail;
     private ImageButton btnTel;
     private ImageButton btnWeb;
     private ImageButton btnCam;
@@ -26,11 +29,18 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtTel;
     private EditText txtWeb;
     private final int PHONE_CALL_CODE = 100;
+    private final int PICTURE_FROM_CAM = 101;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Setear el icono de la aplicacion
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.ic_iconito);
+
         btn = (Button) findViewById(R.id.btnAceptar);
         text = (EditText) findViewById(R.id.txtMensaje);
         btnTel = (ImageButton) findViewById(R.id.btnTel);
@@ -38,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         btnWeb = (ImageButton) findViewById(R.id.btnWeb);
         txtWeb = (EditText) findViewById(R.id.txtWeb);
         btnCam = (ImageButton) findViewById(R.id.btnCamera);
+        btnContactos = (Button)findViewById(R.id.btnContactos);
+        btnEmail = (Button)findViewById(R.id.btnMail);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,6 +132,48 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        //Bototn para acceder a los contactos
+        btnContactos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentContactos = new Intent(Intent.ACTION_VIEW, Uri.parse("content://contacts/people"));
+
+                startActivity(intentContactos);
+            }
+        });
+        //Boton que abre pantalla para enviar eMails
+        btnEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentMail = new Intent(MainActivity.this,ThirdActivity.class);
+                startActivity(intentMail);
+            }
+        });
+        //Boton para acceder a la camara
+        btnCam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentCam = new Intent("android.media.action.IMAGE_CAPTURE");
+                //startActivity(intentCam);
+                startActivityForResult(intentCam,PICTURE_FROM_CAM);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch(requestCode){
+            case PICTURE_FROM_CAM:
+                if (resultCode == Activity.RESULT_OK){
+                    String result = data.toUri(0);
+                    Toast.makeText(this,"Resultaoo: " + result,Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(this,"Hubo un error con la imagen, vuelva a intentar",Toast.LENGTH_SHORT).show();
+                }
+            break ;
+            default:
+                super.onActivityResult(requestCode, resultCode, data);
+        }
 
     }
 

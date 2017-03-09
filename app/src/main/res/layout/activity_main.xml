@@ -106,4 +106,23 @@
         android:layout_alignStart="@+id/txtWeb"
         android:background="#E91E63"/>
 
+    <Button
+        android:id="@+id/btnContactos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="Ver contactos"
+        android:layout_below="@+id/btnCamera"
+        android:layout_alignLeft="@+id/btnCamera"
+        android:layout_alignStart="@+id/btnCamera" />
+
+    <Button
+        android:id="@+id/btnMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btnContactos"
+        android:layout_toEndOf="@+id/txtM"
+        android:layout_toRightOf="@+id/txtM"
+        android:text="Enviar eMail" />
+
 </RelativeLayout>
